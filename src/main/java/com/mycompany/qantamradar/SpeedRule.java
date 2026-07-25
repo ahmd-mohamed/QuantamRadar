@@ -12,6 +12,7 @@ public class SpeedRule implements Rule {
                     300
             );
         }
+
         if (observation.getCarType() == CarType.Bus&& observation.getSpeed() > 70) {
             return new Violation(
                     "speed of "+ observation.getSpeed()+ " exceeded max allowed 70",

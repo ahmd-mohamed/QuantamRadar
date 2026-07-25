@@ -4,16 +4,15 @@ import java.util.*;
 
 public class Observation {
     private String plateNumber;
-    private String date;
+    private Date date;
     private CarType carType;
     private int speed;
     private SeatbeltStatus seatbeltStatus;
-
     public Observation() {
 
     }
 
-    public Observation(String plateNumber, String date, CarType carType, int speed, SeatbeltStatus seatbeltStatus) {
+    public Observation(String plateNumber, Date date, CarType carType, int speed, SeatbeltStatus seatbeltStatus) {
         this.plateNumber = plateNumber;
         this.date = date;
         this.carType = carType;
@@ -29,11 +28,12 @@ public class Observation {
         this.plateNumber = plateNumber;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
+
         this.date = date;
     }
 
