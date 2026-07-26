@@ -43,4 +43,31 @@ public class Fine {
         return total;
 
     }
-}
+
+    public void printfine() {
+        System.out.println("Traffic " +
+                "for car " + plateNumber
+        );
+        System.out.println("Total amount: " + CalculateTotalPrice()+" EGP");
+        System.out.println("Violations:");
+        for (Violation violation : violations) {
+
+            System.out.println(
+                    violation.getDescription()
+                            + " : "
+                            + violation.getAmount()
+                            + " EGP"
+            );
+
+        }
+
+    }
+    @Override
+    public String toString () {
+        return "Fine{" +
+                "plateNumber='" + plateNumber + '\'' +
+                ", violations=" + violations +
+                '}';
+    }
+
+    }

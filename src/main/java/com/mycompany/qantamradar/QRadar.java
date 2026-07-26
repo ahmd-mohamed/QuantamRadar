@@ -51,6 +51,21 @@ public class QRadar {
             );
             fines.add(fine);
         }
+
+    }
+    public HashMap<String, Integer> getallfines() {
+
+        HashMap<String, Integer> result = new HashMap<>();
+
+        for (Fine fine : fines) {
+
+            result.put(
+                    fine.getPlateNumber(),
+                    fine.CalculateTotalPrice()
+            );
+        }
+
+        return result;
     }
 
 }

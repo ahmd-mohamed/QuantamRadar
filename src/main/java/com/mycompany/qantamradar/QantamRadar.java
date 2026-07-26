@@ -5,35 +5,51 @@ package com.mycompany.qantamradar;
 
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 public class QantamRadar {
 
     public static void main(String[] args) {
 
 
+        ArrayList<Rule> rules = new ArrayList<>();
+
+        rules.add(new SpeedRule());
+        rules.add(new SeatbeltRule());
+
+
+        QRadar radar = new QRadar(rules);
+
 
         Observation o1 = new Observation(
-                "ABC123",
+                "ABC1234",
                 new Date(),
                 CarType.Private,
-                90,
+                94,
                 SeatbeltStatus.not
         );
-Rule r1 = new SeatbeltRule();
-Rule r2 = new SpeedRule();
-Violation v1 = r1.check(o1);
-Violation v2 = r2.check(o1);
 
-        System.out.println(r1.check(o1));
-        System.out.println(r2.check(o1));
-        System.out.println();
-        ArrayList<Violation> violations = new ArrayList<>();
-        violations.add(v1);
-        violations.add(v2);
-        Fine f1 = new Fine("ABC123",violations);
-        System.out.println(f1.CalculateTotalPrice());
 
+        radar.observe(o1);
+
+
+
+        for (Fine fine : radar.getFines()) {
+            fine.printfine();
+        }
+
+
+        Map<String, Integer> allFines = radar.getallfines();
+
+        for (Map.Entry<String, Integer> entry : allFines.entrySet()) {
+
+            System.out.println(
+                    entry.getKey()
+                            + " : "
+                            + entry.getValue()
+                            + " EGP"
+            );
+        }
     }
 
 
